@@ -1,19 +1,22 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import useFirestore from '../hooks/useFirestore'
 import { motion } from 'framer-motion'
 
-const ImageGrid = ({setSelectedImg ,setSelectedImgId}) => {
-    const { data} = useFirestore("images")
+const ImageGrid = ({setSelectedImg }) => {
     
+  
+  const { data} = useFirestore("images")    //useFirestore function will return the data fetched from the firestore
+
     return (
+      
         <div className='img-grid'>
+          
            { data && data.map((item)=>(
               <motion.div 
               className='img-wrap' 
               key={item.id} 
               onClick={()=>{
-                  setSelectedImg(item.Url); 
-                  setSelectedImgId(item.id)
+                  setSelectedImg(item);  
                 }}
               layout
               whileHover={{opacity: 1}}

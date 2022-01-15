@@ -6,14 +6,13 @@ import UploadForm from '../components/UploadForm';
 
 function Home({currUser, setCurrUser}) {
   const [selectedImg, setSelectedImg] = useState(null)
-  const [selectedImgId, setSelectedImgId] = useState(null)
 
   return (
     <div className="Home">
       <Title  setCurrUser={setCurrUser}/>
       <UploadForm />
-      <ImageGrid setSelectedImg={setSelectedImg} setSelectedImgId={setSelectedImgId}/>
-      {selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} selectedImgId={selectedImgId}/>}
+      <ImageGrid setSelectedImg={setSelectedImg} />
+      {selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg} />}
     </div>
   );
 }

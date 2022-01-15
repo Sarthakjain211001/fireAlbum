@@ -24,6 +24,7 @@ const Title = ({setCurrUser}) => {
       <span className='username' id="u2">{auth.currentUser.email} </span>
       <h2>Your Pictures</h2>
       <p>An online Album to keep your pictures safe</p>
+      
     </div>
   )
 }

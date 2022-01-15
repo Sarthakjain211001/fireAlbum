@@ -36,3 +36,35 @@ Name of the keys should be in capital and they should start with "REACT_APP"
  //In the file where we want to use .env file : 
     env.config()
     process.env.REACT_APP_API_KEY
+
+
+****
+When we are uploading the image ... we are first sending it to firebase storage. From there we get the downloadURL. 
+And then we are storing the downloadURL, userId and createdAt in firestore.
+
+On deleting an image we are deleting it from firestore only. Not from storage.
+
+
+****IMP : 
+In firestore only one thing can be saved with one name. 2 different images can't be saved with hte same name. If we upload another pic having same name then the previous one will get overwritten.
+
+If 2 different users upload the same pic i.e If the pic is same and the name is also same then it will get stored once in storage but in firestore it will be present in both the users.
+(NO PROBLEM)
+
+But if a user uploads another pic having same name then the prev one will get overwritten. And the same pic(new one)
+will be shown at 2 places on frontend And in the firestore both will be having the same download URL.
+(PROBLEM)
+
+Suppose user1 uploads a pic with the name Img1.jpg
+And suppose another user (user2) uploads another pic but with the same name(Img1.jpg); then the prev pic will get overwritten by the new one. 
+And now the pic uploaded by user2 will also be shown to user1. 
+(BIG PROBLEM)
+
+To prevent this problem : 
+While uploading an image change it's name .Set a unique name for each image. 
+This can be done uisng uuid package. uuid genereates a unique id every time. 
+npm i uuid
+
+import { v4 as uuidv4} from 'uuid' 
+uuid()   //use this while genereating the reference for uploading an image. So that each image will get a unique name
+

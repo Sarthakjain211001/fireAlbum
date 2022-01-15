@@ -1,6 +1,8 @@
 import React from 'react'
 import { useState} from 'react'
 import ProgressBar from './ProgressBar';
+import loader from '../images/loaderImg.gif'
+
 const UploadForm = () => {
 
     const [file, setFile] = useState(null);
@@ -26,6 +28,10 @@ const UploadForm = () => {
           <input type='file' onChange={changeHandler}/>
           <span>+</span>
           </label>
+          
+      <div className='loader' id="Loader">
+      <img className='loaderImg' src={loader} />
+      </div>
           <div className='output'>
               {error && <div className='error'> {error}</div>}
               {file && <div>{file.name}</div>}

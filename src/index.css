@@ -136,6 +136,7 @@ object-fit: scale-down;
   position: absolute;
   top: 0;
   left: 0;
+  cursor: pointer;
 }
 
 /* modal styles */
@@ -167,10 +168,13 @@ object-fit: scale-down;
 .signup button{
   width: 80px;
   height: 30px;
+  cursor: pointer;
+
 }
 .login button{
   width: 80px;
   height: 30px;
+  cursor: pointer;
 }
 .btncenter{
   text-align: center;
@@ -210,4 +214,14 @@ display: none;
     max-height: 100%;
 
   }
+}
+.loader{
+  text-align: center;
+  display: none;
+  
+}
+.loaderImg{
+  width: 45px;
+  height: 45px;
+  
 }
