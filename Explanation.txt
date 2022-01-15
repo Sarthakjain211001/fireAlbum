@@ -1,0 +1,38 @@
+A photo gallery created using react and firebase(to store and retrieve photos). 
+We can add photos and we will get the mew photo updated in real time without updating the page. 
+Used firebase storage - to store the photos 
+     firebase firestore - to get the real time image data
+
+Firebase : 
+go to firebase website. Go to console in it. create a new app.
+disable the analytics. 
+Create web </> . Give name. Copy the script. Paste it in config.js in firebase folder. 
+This will be used for connecting our app with firebase server
+
+npm i firebase.
+import * as firebase from 'firebase/app';
+import 'firebase/storage';   //storage to store our images
+import 'firebase/firestore'  //firestore is the database
+
+const projectStorage = firebase.storage();
+const projectFirestore = firebase.firestore();
+
+export { projectStorage, projectFirestore}
+
+
+
+firebase database 
+storage
+
+
+
+npm i framer-motion
+
+We used .env to store our config data 
+npm i dotenv 
+create a .env file 
+Store the data in form of key value pairs. 
+Name of the keys should be in capital and they should start with "REACT_APP"
+ //In the file where we want to use .env file : 
+    env.config()
+    process.env.REACT_APP_API_KEY
