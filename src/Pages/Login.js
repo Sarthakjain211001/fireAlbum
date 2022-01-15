@@ -1,14 +1,12 @@
 import React from 'react'
 import {getAuth,
     onAuthStateChanged,
-signInWithEmailAndPassword,
-signOut
+signInWithEmailAndPassword
 } from 'firebase/auth'
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Login = ({currUser, setCurrUser}) => {
-const navigate = useNavigate();
     
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")

@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion';
-import { collection, deleteDoc, doc, getFirestore } from 'firebase/firestore';
+import {deleteDoc, doc, getFirestore } from 'firebase/firestore';
 
 import firebaseApp from '../firebase/config';
 
