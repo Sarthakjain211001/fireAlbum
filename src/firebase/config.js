@@ -1,6 +1,6 @@
 import {initializeApp} from "firebase/app"
-// const dotenv=require('dotenv')
-// dotenv.config();
+const dotenv=require('dotenv')
+dotenv.config();
 
 // Your web app's Firebase configuration
 // const hello = process.env.hello;

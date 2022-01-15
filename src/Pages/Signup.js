@@ -25,14 +25,13 @@ const Signup = ({currUser, setCurrUser}) => {
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password)
         .then((credential)=>{
-            console.log("signup success", credential.user.accessToken,credential.user.email );
-            console.log(auth.currentUser) //After succresssful signup ; firebase will login the user. His details will get saved in auth.currentUser
+            
+             //After succresssful signup ; firebase will login the user. His details will get saved in auth.currentUser. onAuthStateChanged will run and it will setCurrUser
                                           //It is persistant i.e it will remain saved even after the user refreshes the page.
         }).catch((err)=>{document.getElementById('showError').innerHTML=err.message});    
         
     }
 
- console.log(email, password)
     return (
         <div className='signup'>
             <div className='title'><h1>FireAlbum</h1></div>

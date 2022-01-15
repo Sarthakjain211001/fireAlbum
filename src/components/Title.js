@@ -7,7 +7,6 @@ const Title = ({setCurrUser}) => {
   const auth = getAuth();
   const handleLogout=()=>{
     signOut(auth).then(()=>{
-        console.log("Logout success");
         setCurrUser("");
         localStorage.clear();
     });

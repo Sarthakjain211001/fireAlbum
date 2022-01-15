@@ -12,7 +12,7 @@ import {
   Navigate
 } from "react-router-dom";
 function App() {
-  // const [selectedImg, setSelectedImg] = useState(null)
+
   const [currUser, setCurrUser] = useState("")
   return (
     <div className="App">
