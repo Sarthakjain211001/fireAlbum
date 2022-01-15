@@ -16,7 +16,9 @@ const Login = ({currUser, setCurrUser}) => {
     
     useEffect(() => {        
         document.getElementById("Loader").style.display="block";  //When the page loads we will show the loader. If auth state changes then if currentuser is not present then disappear the loader( code written in onAuthStateChanged).
-      
+        document.getElementById("loginBtn").disabled= true  ;
+        document.getElementById("loginBtn").style.cursor= "not-allowed" ;
+        
     }, [])
    
     onAuthStateChanged(auth, (currentUser)=>{  //whenver the state of auth will change this will run. i.e if a user logs in or logs out or a persisted state is present . It's like useEffect().
@@ -24,6 +26,9 @@ const Login = ({currUser, setCurrUser}) => {
          
         if(!currentUser){
             document.getElementById("Loader").style.display="none";
+            document.getElementById("loginBtn").disabled= false  
+        document.getElementById("loginBtn").style.cursor= "pointer"
+        
         }
         
     })
