@@ -30,7 +30,7 @@ const UploadForm = () => {
           </label>
           
       <div className='loader' id="Loader">
-      <img className='loaderImg' src={loader} />
+      <img className='loaderImg' src={loader} alt="loader"/>
       </div>
           <div className='output'>
               {error && <div className='error'> {error}</div>}

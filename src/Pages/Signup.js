@@ -52,7 +52,7 @@ const Signup = ({currUser, setCurrUser}) => {
             <p style={{'textAlign':'center', 'fontSize':'15px'}}>Already have an account? <Link to="/login">Login</Link></p>
             <p style={{'textAlign':'center', 'fontSize':'12px', 'color':'red'}} id="showError"></p>
             <div className='loader' id="Loader">
-            <img className='loaderImg' src={loader} />
+            <img className='loaderImg' src={loader} alt="loader"/>
             </div>
         </div>
     )

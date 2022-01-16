@@ -68,3 +68,9 @@ npm i uuid
 import { v4 as uuidv4} from 'uuid' 
 uuid()   //use this while genereating the reference for uploading an image. So that each image will get a unique name
 
+
+
+
+//create a _redirects file in public folder. 
+//Because netlify was giving page not found when i was reloading on login page. 
+//So to correct this ; _redirects file has been created.
