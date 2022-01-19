@@ -5,6 +5,7 @@ onAuthStateChanged
 } from 'firebase/auth'
 import { Link} from 'react-router-dom'
 import loader from '../images/loaderImg.gif'
+import { SignInWithGoogle } from '../firebase/SignInWithGoogle'
 
 const Signup = ({currUser, setCurrUser}) => {
 
@@ -39,7 +40,13 @@ const Signup = ({currUser, setCurrUser}) => {
 
     return (
         <div className='signup'>
-            <div className='title'><h1>FireAlbum</h1></div>
+            <div className='title'>
+                <h1>FireAlbum</h1>
+                <button onClick={SignInWithGoogle}>
+                <img className='googleImg' src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png'/>    
+                    <span>Continue with Google</span>
+                </button>
+            </div>
             <h3 style={{'textAlign':'center', 'marginBottom':'50px', "marginTop":"100px"}}>Create a new account</h3>
             <form>
                 Email<br/>
