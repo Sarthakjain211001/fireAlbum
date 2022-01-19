@@ -21,7 +21,7 @@ const Login = ({currUser, setCurrUser}) => {
         document.getElementById("loginBtn").disabled= true  ;
         document.getElementById("loginBtn").style.cursor= "not-allowed" ;
         
-    }, [])
+    }, [auth])
    
     onAuthStateChanged(auth, (currentUser)=>{  //whenver the state of auth will change this will run. i.e if a user logs in or logs out or a persisted state is present . It's like useEffect().
         setCurrUser(currentUser);
@@ -85,7 +85,7 @@ const Login = ({currUser, setCurrUser}) => {
             
             
             <p style={{'textAlign':'center', 'fontSize':'15px'}}>Don't have an account? <Link to="/signup">Register</Link></p>            
-            <p onClick={resetPassword} style={{"textAlign":"center", 'fontSize':'14px', 'textDecoration':'underline', 'color':'#249e43', 'cursor':'pointer'}}>Forgot Password?</p>
+            <span onClick={resetPassword} style={{"margin":"auto", "display":"table" ,"textAlign":"center" ,'fontSize':'14px', 'textDecoration':'underline', 'color':'#249e43', 'cursor':'pointer'}}>Forgot Password?</span>
             <p style={{'textAlign':'center', 'fontSize':'12px', 'color':'red'}} id="showError"></p>
             <div id="reset" style={{"textAlign":'center', 'display':'none'}}>
             <input  id="resetPassInput" onChange={e=>setResetMail(e.target.value)} placeholder='Enter email Id to send password reset Link'></input>
