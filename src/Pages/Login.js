@@ -21,7 +21,7 @@ const Login = ({currUser, setCurrUser}) => {
         document.getElementById("loginBtn").disabled= true  ;
         document.getElementById("loginBtn").style.cursor= "not-allowed" ;
         
-    }, [auth])
+    },[])
    
     onAuthStateChanged(auth, (currentUser)=>{  //whenver the state of auth will change this will run. i.e if a user logs in or logs out or a persisted state is present . It's like useEffect().
         setCurrUser(currentUser);
@@ -60,8 +60,8 @@ const Login = ({currUser, setCurrUser}) => {
     }
     const sendLink = ()=>{
         sendPasswordResetEmail(auth, resetMail)
-        .then(()=>{document.getElementById('sendSuccess').style.display='block'; console.log("send Success");})
-        .catch((err)=>{document.getElementById('showError').innerHTML=err.message; console.log("send Err")})
+        .then(()=>{document.getElementById('sendSuccess').style.display='block'; document.getElementById('showError').innerHTML=""})
+        .catch((err)=>{document.getElementById('showError').innerHTML=err.message})
     }
     
     return (
