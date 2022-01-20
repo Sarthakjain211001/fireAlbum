@@ -58,7 +58,7 @@ const Login = ({currUser, setCurrUser, L, setL}) => {
 
     const resetPassword = ()=>{
         document.getElementById('reset').style.display="block"
-        console.log("forgor clicked");
+     
     }
     const sendLink = ()=>{
         sendPasswordResetEmail(auth, resetMail)
