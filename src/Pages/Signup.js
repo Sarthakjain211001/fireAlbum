@@ -39,9 +39,7 @@ const Signup = ({currUser, setCurrUser, L, setL}) => {
     }
 
     const setLoadOff=()=>{
-        
         setL(0);
-        console.log("Loader set to 0");
     }
 
     return (
