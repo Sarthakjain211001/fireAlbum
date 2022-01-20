@@ -52,6 +52,7 @@ const Login = ({currUser, setCurrUser, L, setL}) => {
             document.getElementById("loginBtn").disabled= false;
             document.getElementById("loginBtn").style.cursor= "pointer"
             document.getElementById('showError').innerHTML=err.message
+            document.getElementById('sendSuccess').style.display="none";
         });        
         
     }
@@ -63,7 +64,7 @@ const Login = ({currUser, setCurrUser, L, setL}) => {
     const sendLink = ()=>{
         sendPasswordResetEmail(auth, resetMail)
         .then(()=>{document.getElementById('sendSuccess').style.display='block'; document.getElementById('showError').innerHTML=""})
-        .catch((err)=>{document.getElementById('showError').innerHTML=err.message})
+        .catch((err)=>{document.getElementById('showError').innerHTML=err.message; document.getElementById('sendSuccess').style.display="none";})
     }
 
     const setLoadOff=()=>{
@@ -80,7 +81,7 @@ const Login = ({currUser, setCurrUser, L, setL}) => {
                     <span>Continue with Google</span>
                 </button>
             </div>
-            <h3 style={{'textAlign':'center', 'marginBottom':'50px', "marginTop":"100px"}}>Login to your account</h3>
+            <h3>Login to your account</h3>
             <form>
                 Email<br/>
                 <input placeholder='email' type='email' onChange={(e)=> setEmail(e.target.value)}/><br/><br/>

@@ -231,6 +231,18 @@ object-fit: scale-down;
 #u2{
 display: none;
 }
+
+.signup h3{
+text-align:center; 
+margin-bottom:50px;
+ margin-top:100px;
+}
+.login h3{
+  text-align:center; 
+margin-bottom:50px;
+ margin-top:100px;
+}
+
 @media screen and (max-width: 480px) {
   .topRight{
     flex-direction: column;
@@ -253,6 +265,16 @@ display: none;
     max-width: 90%;
     max-height: 76%;
   }
+  .signup h3{
+     margin-top: 50px;
+  }
+  .login h3{
+    margin-top: 50px;
+ }
+ form{
+  margin: -15px;
+}
+
 }
 .loader{
   text-align: center;

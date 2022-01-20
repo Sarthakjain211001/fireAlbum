@@ -7,7 +7,7 @@ import { Link} from 'react-router-dom'
 import loader from '../images/loaderImg.gif'
 import { SignInWithGoogle } from '../firebase/SignInWithGoogle'
 
-const Signup = ({currUser, setCurrUser}) => {
+const Signup = ({currUser, setCurrUser, L, setL}) => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -38,6 +38,12 @@ const Signup = ({currUser, setCurrUser}) => {
         
     }
 
+    const setLoadOff=()=>{
+        
+        setL(0);
+        console.log("Loader set to 0");
+    }
+
     return (
         <div className='signup'>
             <div className='title'>
@@ -47,7 +53,7 @@ const Signup = ({currUser, setCurrUser}) => {
                     <span>Continue with Google</span>
                 </button>
             </div>
-            <h3 style={{'textAlign':'center', 'marginBottom':'50px', "marginTop":"100px"}}>Create a new account</h3>
+            <h3 >Create a new account</h3>
             <form>
                 Email<br/>
                 <input placeholder='email' type='email' onChange={(e)=> setEmail(e.target.value)}/><br/><br/>
@@ -56,7 +62,7 @@ const Signup = ({currUser, setCurrUser}) => {
                 <button id="signupBtn"type='submit' onClick={handleSignup}>Signup</button>
             </form>
             <br/>
-            <p style={{'textAlign':'center', 'fontSize':'15px'}}>Already have an account? <Link to="/login">Login</Link></p>
+            <p style={{'textAlign':'center', 'fontSize':'15px'}}>Already have an account? <Link to="/login" onClick={setLoadOff}>Login</Link></p>
             <p style={{'textAlign':'center', 'fontSize':'12px', 'color':'red'}} id="showError"></p>
             <div className='loader' id="Loader">
             <img className='loaderImg' src={loader} alt="loader"/>
