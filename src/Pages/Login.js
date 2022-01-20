@@ -9,27 +9,29 @@ import { Link } from 'react-router-dom';
 import loader from '../images/loaderImg.gif'
 import { SignInWithGoogle } from '../firebase/SignInWithGoogle';
 
-const Login = ({currUser, setCurrUser}) => {
+const Login = ({currUser, setCurrUser, L, setL}) => {
     
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [resetMail, setResetMail] = useState("");
     const auth = getAuth();
-    
+
+ 
     useEffect(() => {        
+        if(L){
         document.getElementById("Loader").style.display="block";  //When the page loads we will show the loader. If auth state changes then if currentuser is not present then disappear the loader( code written in onAuthStateChanged).
         document.getElementById("loginBtn").disabled= true  ;
         document.getElementById("loginBtn").style.cursor= "not-allowed" ;
-        
+        }        
     },[])
-   
+
     onAuthStateChanged(auth, (currentUser)=>{  //whenver the state of auth will change this will run. i.e if a user logs in or logs out or a persisted state is present . It's like useEffect().
         setCurrUser(currentUser);
          
         if(!currentUser){
             document.getElementById("Loader").style.display="none";
             document.getElementById("loginBtn").disabled= false  
-        document.getElementById("loginBtn").style.cursor= "pointer"
+            document.getElementById("loginBtn").style.cursor= "pointer"
         
         }
         
@@ -63,12 +65,17 @@ const Login = ({currUser, setCurrUser}) => {
         .then(()=>{document.getElementById('sendSuccess').style.display='block'; document.getElementById('showError').innerHTML=""})
         .catch((err)=>{document.getElementById('showError').innerHTML=err.message})
     }
+
+    const setLoadOff=()=>{
+        setL(0);
+    }
     
     return (
         <div className='login'>
             <div className='title'>
                 <h1>FireAlbum</h1>
-                <button onClick={SignInWithGoogle}>
+                <button onClick={SignInWithGoogle}>  {/*When this fun (SignInWithGoogle) will run the user will get logged in and his details will get saved in auth.
+                                                      And as the auth will change onAuthStateChanged will run and it will set the currUser and we will get redirected to  "/"  */}
                 <img className='googleImg' src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png'/>    
                     <span>Continue with Google</span>
                 </button>
@@ -84,8 +91,8 @@ const Login = ({currUser, setCurrUser}) => {
             <br/>
             
             
-            <p style={{'textAlign':'center', 'fontSize':'15px'}}>Don't have an account? <Link to="/signup">Register</Link></p>            
-            <span onClick={resetPassword} style={{"margin":"auto", "display":"table" ,"textAlign":"center" ,'fontSize':'14px', 'textDecoration':'underline', 'color':'#249e43', 'cursor':'pointer'}}>Forgot Password?</span>
+            <p style={{'textAlign':'center', 'fontSize':'15px'}}>Don't have an account? <Link to="/signup" onClick={setLoadOff}>Register</Link></p>            
+            <span onClick={resetPassword} style={{"margin":"auto", "display":"table" ,"textAlign":"center" ,'fontSize':'14px', 'textDecoration':'underline', 'color':'#249e43', 'cursor':'pointer'}}>Forgot Password?</span>    
             <p style={{'textAlign':'center', 'fontSize':'12px', 'color':'red'}} id="showError"></p>
             <div id="reset" style={{"textAlign":'center', 'display':'none'}}>
             <input  id="resetPassInput" onChange={e=>setResetMail(e.target.value)} placeholder='Enter email Id to send password reset Link'></input>
@@ -96,9 +103,6 @@ const Login = ({currUser, setCurrUser}) => {
             <img className='loaderImg' src={loader} alt="loader"/>
             
             </div>
-            
-                          {/*When this fun will run the user will get logged in and his details will get saved in auth.
-                           Amd as the auth will change onAuthStateChanged will run and it will set the currUser and we will get redirected to  "/"  */}
         </div>
     )
 }
